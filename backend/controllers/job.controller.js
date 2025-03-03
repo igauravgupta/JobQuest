@@ -46,6 +46,7 @@ export const getAllJobs = async (req, res) => {
         const jobs = await Job.find(query).populate({
             path: "company"
         }).sort({ createdAt: -1 });
+
         if (!jobs) {
             return res.status(404).json({
                 message: "Jobs not found.",
@@ -78,6 +79,7 @@ export const getJobById = async (req, res) => {
         console.log(error);
     }
 }
+
 // admin kitne job create kra hai abhi tk
 export const getAdminJobs = async (req, res) => {
     try {
@@ -86,6 +88,7 @@ export const getAdminJobs = async (req, res) => {
             path:'company',
             createdAt:-1
         });
+        
         if (!jobs) {
             return res.status(404).json({
                 message: "Jobs not found.",
