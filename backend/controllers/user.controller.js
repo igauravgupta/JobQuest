@@ -2,7 +2,7 @@ import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
-import cloudinary from "../utils/cloudinary.js";
+import {uploadOnCloudinary} from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
     try {
@@ -16,10 +16,8 @@ export const register = async (req, res) => {
             });
         };
         const file = req.file;
-        const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-
-        // check for user exists
+        console.log(file);
+        const cloudResponse = await uploadOnCloudinary(file.path);
         const user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({
