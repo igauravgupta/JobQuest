@@ -95,7 +95,7 @@ export const login = async (req, res) => {
 
         // secure : true for production ( https ) but in local ( http )
         return res.status(200)
-        .cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'strict' , secure:process.env.NODE_ENV === "production" })
+        .cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true,  sameSite: 'None' , secure:process.env.NODE_ENV === "production" })
         .json({
             message: `Welcome back ${user.fullname}`,
             user,
