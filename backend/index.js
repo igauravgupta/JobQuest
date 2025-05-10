@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin:'https://skillop-kappa.vercel.app',
+    origin:'https://skill-op.netlify.app',
     credentials:true
 }
 
