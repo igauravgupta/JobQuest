@@ -18,16 +18,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-// const corsOptions = {
-//     origin:'https://jobquest-v1.netlify.app',
-//     credentials:true
-// }
-
-
 const corsOptions = {
-    origin:'http://localhost:5173',
+    origin:'https://skillop-kappa.vercel.app',
     credentials:true
 }
+
+
+// const corsOptions = {
+//     origin:'http://localhost:5173',
+//     credentials:true
+// }
 
 app.use(cors(corsOptions));
 app.use(express.static("./public"));
@@ -42,6 +42,9 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 app.use("/api/v1/health", healthCheck);
+
+// health check route
+// https://jobquest-my-academic-projects.up.railway.app/api/v1/health/health
 
 
 
