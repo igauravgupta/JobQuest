@@ -18,8 +18,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
+// const corsOptions = {
+//     origin:'https://jobquest-v1.netlify.app',
+//     credentials:true
+// }
+
+
 const corsOptions = {
-    origin:'https://jobquest-v1.netlify.app',
+    origin:'http://localhost:5173',
     credentials:true
 }
 
