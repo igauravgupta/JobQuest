@@ -5,19 +5,18 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package.json ./
+COPY package*.json ./
 
-RUN npm install --omit=dev
-
-# Install dependencies
-RUN npm ci
+# Install exact dependencies using lockfile (CI-friendly), where npm ci - installs exact versions from package-lock.json.
+RUN npm ci --omit=dev
 
 # Copy all files
 COPY . .
 
 
-# Expose the port your app runs on
+# Expose the port 
 EXPOSE 8000
+
 
 # Start the server
 CMD ["node", "./index.js"]

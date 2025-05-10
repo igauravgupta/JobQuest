@@ -132,7 +132,6 @@ export const updateProfile = async (req, res) => {
         const { fullname, email, phoneNumber, bio, skills } = req.body;
         
         const file = req.file;
-        console.log(file);
         const cloudResponse = await uploadOnCloudinary(file.path);
 
 
