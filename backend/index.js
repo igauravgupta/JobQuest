@@ -2,12 +2,12 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./utils/db.js";
-import userRoute from "./routes/user.route.js";
-import companyRoute from "./routes/company.route.js";
-import jobRoute from "./routes/job.route.js";
-import applicationRoute from "./routes/application.route.js";
-import healthCheck from "./routes/healthCheck.routes.js";
+import connectDB from "./src/config/db.js";
+import userRoute from "./src/routes/user.routes.js";
+import companyRoute from "./src/routes/company.routes.js";
+import jobRoute from "./src/routes/job.routes.js";
+import applicationRoute from "./src/routes/application.routes.js";
+import healthCheck from "./src/routes/healthCheck.routes.js";
 
 dotenv.config({});
 
@@ -18,16 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
+//CORS configuration
 const corsOptions = {
-    origin:'https://skill-op.netlify.app',
+    origin: process.env.ORIGIN,
     credentials:true
 }
-
-
-// const corsOptions = {
-//     origin:'http://localhost:5173',
-//     credentials:true
-// }
 
 app.use(cors(corsOptions));
 app.use(express.static("./public"));
@@ -43,8 +38,6 @@ app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 app.use("/api/v1/health", healthCheck);
 
-// health check route
-// https://jobquest-my-academic-projects.up.railway.app/api/v1/health/health
 
 
 

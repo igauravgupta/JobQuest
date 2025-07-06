@@ -4,6 +4,6 @@ import {Router}from "express";
 
 const router = Router();
 
-router.get("/health", healthCheck);
+router.get("/", healthCheck);
 
 export default router;
